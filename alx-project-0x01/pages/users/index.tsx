@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "@/components/layout/Header";
-import UserCard from "@/components/common/UserCard";
+// Update the path below if your UserCard component is located elsewhere
+import UserCard from "../../components/common/UserCard";
 import { UserProps } from "@/interfaces";
 
 interface UsersPageProps {
