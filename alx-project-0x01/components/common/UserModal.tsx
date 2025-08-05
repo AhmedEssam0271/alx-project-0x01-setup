@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { UserModalProps, UserData } from "@/interfaces";
+import { UserModalProps, UserData, UserProps } from "@/interfaces";
 
 const initialState: UserData = {
   name: "",
@@ -52,10 +52,26 @@ const UserModal: React.FC<UserModalProps> = ({ onClose, onSubmit }) => {
     }
   };
 
+  // Helper to generate a new unique id (replace with your own logic as needed)
+  const generateNewId = (): number => Date.now();
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit(user);
+    const userWithId: UserProps = {
+      ...user,
+      id: user.id ?? generateNewId(),
+    };
+    onSubmit(userWithId);
     onClose();
+  };
+
+  // When creating a new user, ensure id is always a number
+  const handleAddUser = (user: UserData) => {
+    const userWithId: UserProps = {
+      ...user,
+      id: user.id ?? generateNewId(), // generateNewId() should return a number
+    };
+    // Now use userWithId where UserProps is expected
   };
 
   return (
