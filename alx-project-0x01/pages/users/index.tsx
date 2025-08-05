@@ -4,6 +4,11 @@ import UserCard from "@/components/common/UserCard";
 import UserModal from "@/components/common/UserModal";
 import { UserProps, UserData } from "@/interfaces";
 
+export interface UserModalProps {
+  onClose: () => void;
+  onSubmit: (user: UserData) => void;
+}
+
 interface UsersPageProps {
   posts: UserProps[];
 }
